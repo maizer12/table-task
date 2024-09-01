@@ -5,3 +5,4 @@ export { Dropdown } from './Dropdown';
 export { Checkbox } from './Checkbox';
 export { Title } from './Title';
 export { Loader } from './Loader';
+export { Alert } from './Alert';

@@ -8,7 +8,7 @@ interface LoaderProps {
 
 export const Loader: React.FC<LoaderProps> = ({ size = 'medium', className }) => {
 	const loaderClass = classNames(
-		'border-t-4 border-primary rounded-full animate-spin',
+		'border-t-4 border-primary rounded-full fade-in animate-spin',
 		{
 			'w-6 h-6': size === 'small',
 			'w-12 h-12': size === 'medium',

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../../@types';
+import { toggleContactAndSave } from '../../utils/contactSaveUtils';
 
 interface ContactsState {
 	contacts: User[];
@@ -7,8 +8,10 @@ interface ContactsState {
 	error: string | null;
 }
 
+const initialContacts = JSON.parse(localStorage.getItem('contacts') || '[]');
+
 const initialState: ContactsState = {
-	contacts: [],
+	contacts: initialContacts,
 	loading: false,
 	error: null,
 };
@@ -18,13 +21,7 @@ const contactsSlice = createSlice({
 	initialState,
 	reducers: {
 		toggleContact: (state, action: PayloadAction<User>) => {
-			const existingContactIndex = state.contacts.findIndex(contact => contact.id === action.payload.id);
-
-			if (existingContactIndex !== -1) {
-				state.contacts.splice(existingContactIndex, 1);
-			} else {
-				state.contacts.push(action.payload);
-			}
+			state.contacts = toggleContactAndSave(state.contacts, action.payload);
 		},
 
 		removeContact: (state, action: PayloadAction<number>) => {

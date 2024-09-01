@@ -11,7 +11,7 @@ export const GlobalSearch: React.FC = () => {
 	};
 
 	return (
-		<div className='mb-4 max-w-[320px] w-full'>
+		<div className='mb-4 max-w-[320px] w-full slide-in-left'>
 			<input type='text' placeholder='Search across all columns' value={globalSearch} onChange={handleSearchChange} className='p-2 border rounded w-full focus:placeholder:opacity-0 placeholder:duration-300' />
 		</div>
 	);

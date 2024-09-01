@@ -1,12 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { updateHiddenColumns } from '../../utils/filterUtils';
 
 interface FilterState {
 	hiddenColumns: string[];
 	globalSearch: string;
 }
 
+const initialHiddenColumns = JSON.parse(localStorage.getItem('hiddenColumns') || '[]');
+
 const initialState: FilterState = {
-	hiddenColumns: [],
+	hiddenColumns: initialHiddenColumns,
 	globalSearch: '',
 };
 
@@ -15,18 +18,15 @@ const filterSlice = createSlice({
 	initialState,
 	reducers: {
 		toggleColumnVisibility: (state, action: PayloadAction<string>) => {
-			if (state.hiddenColumns.includes(action.payload)) {
-				state.hiddenColumns = state.hiddenColumns.filter(col => col !== action.payload);
-			} else {
-				state.hiddenColumns.push(action.payload);
-			}
+			state.hiddenColumns = updateHiddenColumns(state.hiddenColumns, action.payload);
 		},
 		setGlobalSearch: (state, action: PayloadAction<string>) => {
 			state.globalSearch = action.payload;
 		},
 		resetFilters: state => {
-			state.globalSearch = '';
 			state.hiddenColumns = [];
+			state.globalSearch = '';
+			localStorage.removeItem('hiddenColumns');
 		},
 	},
 });

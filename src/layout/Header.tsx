@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '../components/ui';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { UserCheck } from 'lucide-react';
 
 const menuItems = [
@@ -18,7 +18,7 @@ export const Header: React.FC<Props> = ({ className = '' }) => {
 		<header className={classNames('bg-background border-b border-border text-white p-4', className)}>
 			<Container className='flex justify-between items-center'>
 				<Link to='/'>
-					<div className='text-lg font-bold text-text flex items-center gap-2'>
+					<div className='text-lg font-bold text-text flex items-center gap-2 scale-up'>
 						<div className='w-9 h-9 rounded-[50%] flex justify-center items-center border border-primary'>
 							<UserCheck className='text-primary' />
 						</div>
@@ -29,9 +29,9 @@ export const Header: React.FC<Props> = ({ className = '' }) => {
 					<ul className='flex space-x-4'>
 						{menuItems.map(item => (
 							<li key={item.name}>
-								<Link to={item.path} className='text-text text-base active:border-primary border-b'>
+								<NavLink to={item.path} className='text-text text-base border-b-2 border-transparent duration-300 hover:border-primary hover:text-primary [&.active]:border-primary [&.active]:text-primary'>
 									{item.name}
-								</Link>
+								</NavLink>
 							</li>
 						))}
 					</ul>

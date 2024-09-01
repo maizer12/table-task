@@ -31,7 +31,7 @@ export const UsersTable: React.FC<UsersTableProps> = ({ users, loading, headers,
 			data={filteredUsers}
 			isLoading={loading}
 			renderActions={row => (
-				<Button onClick={() => onToggleContact(row)} justIcon={true}>
+				<Button onClick={() => onToggleContact(row)} justIcon={true} variant={isInContacts(row) ? 'outline' : 'primary'}>
 					{isInContacts(row) ? <UserCheck /> : <UserPlus />}
 				</Button>
 			)}
