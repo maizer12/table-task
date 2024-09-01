@@ -1,50 +1,43 @@
-# React + TypeScript + Vite
+# Contact Management Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+A small web application for managing contacts, allowing users to view, add, and remove contacts. The application supports data filtering functionality, saving selected filters and contacts in local storage for future use. It also provides the ability to flexibly customize the display of columns in the table and features a simple and intuitive user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Functionality
 
-## Expanding the ESLint configuration
+### Contact Management
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Users can view, add, and remove contacts.
+- Contacts can be toggled in and out of a favorites list, with changes saved in local storage.
 
-- Configure the top-level `parserOptions` property like this:
+### Data Filtering
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Perform global searches across all columns.
+- Filter specific columns like ID, Full Name, User Name, Email Address, Phone Number, and Website.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Column Customization
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- Customize table columns by showing or hiding them.
+- Column visibility preferences are saved in local storage.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Responsive UI
+
+- The interface adapts to different screen sizes.
+- Tables are scrollable horizontally if content exceeds the viewable area.
+
+### Reset Filters
+
+- A "Reset Filters" button clears all filters and restores the default view.
+
+### Local Storage Integration
+
+- User preferences like contacts, column visibility, and filters are saved in local storage and reloaded on return.
+
+### User Feedback
+
+- Visual alerts notify users when no columns are selected or when the table is empty.
+
+### UI Animations
+
+- Simple animations enhance user experience with smooth transitions.
